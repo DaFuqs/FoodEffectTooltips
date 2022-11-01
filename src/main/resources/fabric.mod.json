@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "foodeffecttooltips",
+  "version": "${version}",
+  "name": "Food Effect Tooltips",
+  "description": "Adds Tooltips to food that gives Status Effects when eaten",
+  "authors": [
+    "Dafuqs"
+  ],
+  "contact": {
+    "website": "github.com/DaFuqs/FoodEffectTooltips",
+    "repo": "github.com/DaFuqs/FoodEffectTooltips"
+  },
+  "license": "MIT",
+  "icon": "assets/foodeffecttooltips/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "de.dafuqs.foodeffecttooltips.FoodeffecttooltipsClient"
+    ]
+  },
+  "depends": {
+    "minecraft": ">=1.18.2",
+    "fabricloader": "*",
+    "fabric": "*"
+  }
+}
