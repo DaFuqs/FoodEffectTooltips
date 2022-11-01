@@ -11,7 +11,7 @@
     "website": "github.com/DaFuqs/FoodEffectTooltips",
     "repo": "github.com/DaFuqs/FoodEffectTooltips"
   },
-  "license": "MIT",
+  "license": "LGPL-3",
   "icon": "assets/foodeffecttooltips/icon.png",
   "environment": "client",
   "entrypoints": {
