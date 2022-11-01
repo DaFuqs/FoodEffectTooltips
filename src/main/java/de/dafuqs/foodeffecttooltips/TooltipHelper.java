@@ -8,9 +8,9 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
+import net.minecraft.screen.ScreenTexts;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.StringHelper;
 
@@ -33,14 +33,14 @@ public class TooltipHelper {
 		}
 		
 		List<Pair<EntityAttribute, EntityAttributeModifier>> modifiersList = Lists.newArrayList();
-		TranslatableText translatableText;
+		MutableText translatableText;
 		StatusEffect statusEffect;
 		for(Iterator<Pair<StatusEffectInstance, Float>> var5 = effectsWithChance.iterator(); var5.hasNext(); tooltip.add(translatableText.formatted(statusEffect.getCategory().getFormatting()))) {
 			Pair<StatusEffectInstance, Float> entry = var5.next();
 			StatusEffectInstance statusEffectInstance = entry.getFirst();
 			Float chance = entry.getSecond();
 			
-			translatableText = new TranslatableText(statusEffectInstance.getTranslationKey());
+			translatableText = Text.translatable(statusEffectInstance.getTranslationKey());
 			statusEffect = statusEffectInstance.getEffectType();
 			Map<EntityAttribute, EntityAttributeModifier> map = statusEffect.getAttributeModifiers();
 			if (!map.isEmpty()) {
@@ -52,19 +52,19 @@ public class TooltipHelper {
 			}
 			
 			if (statusEffectInstance.getAmplifier() > 0) {
-				translatableText = new TranslatableText("potion.withAmplifier", translatableText, new TranslatableText("potion.potency." + statusEffectInstance.getAmplifier()));
+				translatableText = Text.translatable("potion.withAmplifier", translatableText, Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
 			}
 			if (statusEffectInstance.getDuration() > 20) {
-				translatableText = new TranslatableText("potion.withDuration", translatableText, StringHelper.formatTicks(statusEffectInstance.getDuration()));
+				translatableText = Text.translatable("potion.withDuration", translatableText, StringHelper.formatTicks(statusEffectInstance.getDuration()));
 			}
 			if(chance < 1.0F) {
-				translatableText = new TranslatableText("foodeffecttooltips.food.withChance", translatableText, Math.round(chance * 100));
+				translatableText = Text.translatable("foodeffecttooltips.food.withChance", translatableText, Math.round(chance * 100));
 			}
 		}
 		
 		if (!modifiersList.isEmpty()) {
-			tooltip.add(LiteralText.EMPTY);
-			tooltip.add((new TranslatableText("foodeffecttooltips.food.whenEaten")).formatted(Formatting.DARK_PURPLE));
+			tooltip.add(ScreenTexts.EMPTY);
+			tooltip.add((Text.translatable("foodeffecttooltips.food.whenEaten")).formatted(Formatting.DARK_PURPLE));
 			
 			for (Pair<EntityAttribute, EntityAttributeModifier> entityAttributeEntityAttributeModifierPair : modifiersList) {
 				EntityAttributeModifier entityAttributeModifier3 = entityAttributeEntityAttributeModifierPair.getSecond();
@@ -77,10 +77,10 @@ public class TooltipHelper {
 				}
 				
 				if (d > 0.0D) {
-					tooltip.add((new TranslatableText("attribute.modifier.plus." + entityAttributeModifier3.getOperation().getId(), ItemStack.MODIFIER_FORMAT.format(e), new TranslatableText((entityAttributeEntityAttributeModifierPair.getFirst()).getTranslationKey()))).formatted(Formatting.BLUE));
+					tooltip.add((Text.translatable("attribute.modifier.plus." + entityAttributeModifier3.getOperation().getId(), ItemStack.MODIFIER_FORMAT.format(e), Text.translatable((entityAttributeEntityAttributeModifierPair.getFirst()).getTranslationKey()))).formatted(Formatting.BLUE));
 				} else if (d < 0.0D) {
 					e *= -1.0D;
-					tooltip.add((new TranslatableText("attribute.modifier.take." + entityAttributeModifier3.getOperation().getId(), ItemStack.MODIFIER_FORMAT.format(e), new TranslatableText((entityAttributeEntityAttributeModifierPair.getFirst()).getTranslationKey()))).formatted(Formatting.RED));
+					tooltip.add((Text.translatable("attribute.modifier.take." + entityAttributeModifier3.getOperation().getId(), ItemStack.MODIFIER_FORMAT.format(e), Text.translatable((entityAttributeEntityAttributeModifierPair.getFirst()).getTranslationKey()))).formatted(Formatting.RED));
 				}
 			}
 		}
