@@ -2,6 +2,8 @@ package de.dafuqs.foodeffecttooltips;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
@@ -9,9 +11,12 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenTexts;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.StringHelper;
+import net.minecraft.util.UseAction;
 
 import java.util.Iterator;
 import java.util.List;
@@ -66,9 +71,9 @@ public class TooltipHelper {
 		if (!modifiersList.isEmpty()) {
 			tooltip.add(ScreenTexts.EMPTY);
 			if(drink) {
-				tooltip.add((Text.translatable("potion.whenDrank")).formatted(Formatting.DARK_PURPLE));
+				tooltip.add(Text.translatable("potion.whenDrank").formatted(Formatting.DARK_PURPLE));
 			} else {
-				tooltip.add((Text.translatable(("foodeffecttooltips.food.whenEaten")).formatted(Formatting.DARK_PURPLE));
+				tooltip.add(Text.translatable("foodeffecttooltips.food.whenEaten").formatted(Formatting.DARK_PURPLE));
 			}
 			
 			for (Pair<EntityAttribute, EntityAttributeModifier> entityAttributeEntityAttributeModifierPair : modifiersList) {
