@@ -1,6 +1,8 @@
 package de.dafuqs.foodeffecttooltips;
 
 import de.dafuqs.foodeffecttooltips.config.FoodEffectsConfig;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,6 +20,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		
+		AutoConfig.register(FoodEffectsConfig.class, JanksonConfigSerializer::new);
 		CONFIG = AutoConfig.getConfigHolder(FoodEffectsConfig.class).getConfig();
 		
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
@@ -42,7 +45,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		if(CONFIG.BlacklistedModsIDs.contains(identifier.getNamespace())) {
 			return isWhitelist;
 		}
-		return isWhitelist;
+		return !isWhitelist;
 	}
 	
 	

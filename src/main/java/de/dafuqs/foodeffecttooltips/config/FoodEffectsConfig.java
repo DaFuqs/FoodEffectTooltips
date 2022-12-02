@@ -1,18 +1,21 @@
 package de.dafuqs.foodeffecttooltips.config;
 
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Environment(EnvType.CLIENT)
 @Config(name = "FoodEffectTooltips")
 public class FoodEffectsConfig implements ConfigData {
 	
-	@Comment("")
 	public boolean UseAsWhitelistInstead = false;
 	
-	@Comment("")
 	public List<String> BlacklistedItemIdentifiers = new ArrayList<>();
 	
-	@Comment("")
 	public List<String> BlacklistedModsIDs = new ArrayList<>();
 	
 	@Override
