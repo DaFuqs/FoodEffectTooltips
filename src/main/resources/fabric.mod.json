@@ -17,6 +17,9 @@
   "entrypoints": {
     "client": [
       "de.dafuqs.foodeffecttooltips.FoodeffecttooltipsClient"
+    ],
+    "modmenu": [
+      "de.dafuqs.foodeffecttooltips.config.ModMenuConfig"
     ]
   },
   "depends": {

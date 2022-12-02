@@ -23,11 +23,12 @@ public class TooltipHelper {
 	public static void addFoodComponentEffectTooltip(ItemStack stack, List<Text> tooltip) {
 		FoodComponent foodComponent = stack.getItem().getFoodComponent();
 		if(foodComponent != null) {
-			buildFoodEffectTooltip(tooltip, foodComponent.getStatusEffects());
+			boolean isDrink = stack.getUseAction() == UseAction.DRINK;
+			buildFoodEffectTooltip(tooltip, foodComponent.getStatusEffects(), isDrink);
 		}
 	}
 	
-	public static void buildFoodEffectTooltip(List<Text> tooltip, List<Pair<StatusEffectInstance, Float>> effectsWithChance) {
+	public static void buildFoodEffectTooltip(List<Text> tooltip, List<Pair<StatusEffectInstance, Float>> effectsWithChance, boolean drink) {
 		if(effectsWithChance.isEmpty()) {
 			return;
 		}
@@ -64,7 +65,11 @@ public class TooltipHelper {
 		
 		if (!modifiersList.isEmpty()) {
 			tooltip.add(ScreenTexts.EMPTY);
-			tooltip.add((Text.translatable("foodeffecttooltips.food.whenEaten")).formatted(Formatting.DARK_PURPLE));
+			if(drink) {
+				tooltip.add((Text.translatable("potion.whenDrank")).formatted(Formatting.DARK_PURPLE));
+			} else {
+				tooltip.add((Text.translatable(("foodeffecttooltips.food.whenEaten")).formatted(Formatting.DARK_PURPLE));
+			}
 			
 			for (Pair<EntityAttribute, EntityAttributeModifier> entityAttributeEntityAttributeModifierPair : modifiersList) {
 				EntityAttributeModifier entityAttributeModifier3 = entityAttributeEntityAttributeModifierPair.getSecond();
