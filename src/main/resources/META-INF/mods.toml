@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="LGPL-3"
+issueTrackerURL="https://github.com/Suel-ki/FoodEffectTooltips-Forge/issues/"
+
+[[mods]]
+modId="foodeffecttooltips"
+version="${version}"
+displayName="Food Effect Tooltips"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/food-effect-tooltips-forge"
+logoFile="icon.png"
+credits="Thanks DaFuqs for the original work!"
+authors="Suel_ki"
+description='''Adds Tooltips to food that gives Status Effects when eaten.'''
+
+[[dependencies.foodeffecttooltips]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.foodeffecttooltips]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"

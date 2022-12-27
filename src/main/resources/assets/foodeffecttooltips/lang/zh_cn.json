@@ -1,0 +1,6 @@
+{
+  "foodeffecttooltips.food.withChance": "%s [%d%%]",
+  "foodeffecttooltips.food.whenEaten": "食用后：",
+
+  "config.foodeffecttooltips.title": "食物效果显示"
+}

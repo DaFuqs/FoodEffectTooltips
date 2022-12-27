@@ -1,4 +1,16 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
-  "foodeffecttooltips.food.whenEaten": "When Eaten:"
+  "foodeffecttooltips.food.whenEaten": "When Eaten:",
+
+  "config.foodeffecttooltips.title": "Food Effect Tooltips",
+
+  "cloth_config.FoodEffectTooltips.category.general": "general",
+
+  "cloth_config.FoodEffectTooltips.UseAsWhitelistInstead": "UseAsWhitelistInstead",
+  "cloth_config.FoodEffectTooltips.BlacklistedItemIdentifiers": "BlacklistedItemIdentifiers",
+  "cloth_config.FoodEffectTooltips.BlacklistedModsIDs": "BlacklistedModsIDs",
+
+  "text.cloth_config.FoodEffectTooltips.option.UseAsWhitelistInstead": "Use Lists as Whitelists instead",
+  "text.cloth_config.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Blacklisted Item Identifiers",
+  "text.cloth_config.FoodEffectTooltips.option.BlacklistedModsIDs": "Blacklisted Mod IDs"
 }
