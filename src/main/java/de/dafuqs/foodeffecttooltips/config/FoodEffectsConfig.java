@@ -12,10 +12,9 @@ import java.util.List;
 @Config(name = "FoodEffectTooltips")
 public class FoodEffectsConfig implements ConfigData {
 	
+	public boolean ShowSuspiciousStewTooltips = false;
 	public boolean UseAsWhitelistInstead = false;
-	
 	public List<String> BlacklistedItemIdentifiers = new ArrayList<>();
-	
 	public List<String> BlacklistedModsIDs = new ArrayList<>();
 	
 	@Override
