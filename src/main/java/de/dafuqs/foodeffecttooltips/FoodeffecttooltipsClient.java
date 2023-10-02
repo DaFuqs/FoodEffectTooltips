@@ -1,26 +1,19 @@
 package de.dafuqs.foodeffecttooltips;
 
-import de.dafuqs.foodeffecttooltips.config.FoodEffectsConfig;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SuspiciousStewItem;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
+import de.dafuqs.foodeffecttooltips.config.*;
+import me.shedaniel.autoconfig.*;
+import me.shedaniel.autoconfig.serializer.*;
+import net.fabricmc.api.*;
+import net.fabricmc.fabric.api.client.item.v1.*;
+import net.minecraft.block.*;
+import net.minecraft.entity.effect.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
+import net.minecraft.potion.*;
+import net.minecraft.registry.*;
+import net.minecraft.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Environment(EnvType.CLIENT)
 public class FoodeffecttooltipsClient implements ClientModInitializer {
@@ -34,19 +27,25 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		CONFIG = AutoConfig.getConfigHolder(FoodEffectsConfig.class).getConfig();
 		
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-			if(stack.isOf(Items.SUSPICIOUS_STEW) && FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips && !context.isCreative()) {
-				List<StatusEffectInstance> effects = getStewEffects(stack);
-				if(effects.size() > 0) {
-					PotionUtil.buildTooltip(effects, lines, 1.0F);
+			if (stack.isOf(Items.SUSPICIOUS_STEW) && FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips && !context.isCreative()) {
+				List<StatusEffectInstance> list = new ArrayList();
+				NbtCompound nbtCompound = stack.getNbt();
+				if (nbtCompound != null && nbtCompound.contains("effects", 9)) {
+					SuspiciousStewIngredient.StewEffect.LIST_CODEC.parse(NbtOps.INSTANCE, nbtCompound.getList("effects", 10)).result().ifPresent((list1) -> {
+						list1.forEach((effect) -> {
+							list.add(effect.createStatusEffectInstance());
+						});
+					});
 				}
-			} else if(stack.isFood() && shouldShowTooltip(stack)) {
+				PotionUtil.buildTooltip(list, lines, 1.0F);
+			} else if (stack.isFood() && shouldShowTooltip(stack)) {
 				TooltipHelper.addFoodComponentEffectTooltip(stack, lines);
 			}
 		});
 	}
 	
 	public static boolean shouldShowTooltip(ItemStack stack) {
-		if(CONFIG == null) {
+		if (CONFIG == null) {
 			return false;
 		}
 		
@@ -54,36 +53,13 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		Identifier identifier = Registries.ITEM.getId(item);
 		
 		boolean isWhitelist = CONFIG.UseAsWhitelistInstead;
-		if(CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
+		if (CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
 			return isWhitelist;
 		}
-		if(CONFIG.BlacklistedModsIDs.contains(identifier.getNamespace())) {
+		if (CONFIG.BlacklistedModsIDs.contains(identifier.getNamespace())) {
 			return isWhitelist;
 		}
 		return !isWhitelist;
 	}
-	
-	private static List<StatusEffectInstance> getStewEffects(ItemStack stew) {
-		List<StatusEffectInstance> effects = new ArrayList<>();
-		NbtCompound nbtCompound = stew.getNbt();
-		if (nbtCompound != null && nbtCompound.contains(SuspiciousStewItem.EFFECTS_KEY, 9)) {
-			NbtList nbtList = nbtCompound.getList(SuspiciousStewItem.EFFECTS_KEY, 10);
-			
-			for(int i = 0; i < nbtList.size(); ++i) {
-				NbtCompound nbtCompound2 = nbtList.getCompound(i);
-				int j = 160;
-				if (nbtCompound2.contains(SuspiciousStewItem.EFFECT_DURATION_KEY, 3)) {
-					j = nbtCompound2.getInt(SuspiciousStewItem.EFFECT_DURATION_KEY);
-				}
-				
-				StatusEffect statusEffect = StatusEffect.byRawId(nbtCompound2.getInt(SuspiciousStewItem.EFFECT_ID_KEY));
-				if (statusEffect != null) {
-					effects.add(new StatusEffectInstance(statusEffect, j));
-				}
-			}
-		}
-		return effects;
-	}
-	
 	
 }
