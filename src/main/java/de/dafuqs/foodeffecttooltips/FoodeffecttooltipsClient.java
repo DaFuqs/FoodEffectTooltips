@@ -6,6 +6,8 @@ import me.shedaniel.autoconfig.serializer.*;
 import net.fabricmc.api.*;
 import net.fabricmc.fabric.api.client.item.v1.*;
 import net.minecraft.block.*;
+import net.minecraft.client.*;
+import net.minecraft.client.world.*;
 import net.minecraft.entity.effect.*;
 import net.minecraft.item.*;
 import net.minecraft.nbt.*;
@@ -28,7 +30,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
 			if (stack.isOf(Items.SUSPICIOUS_STEW) && FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips && !context.isCreative()) {
-				List<StatusEffectInstance> list = new ArrayList();
+				List<StatusEffectInstance> list = new ArrayList<>();
 				NbtCompound nbtCompound = stack.getNbt();
 				if (nbtCompound != null && nbtCompound.contains("effects", 9)) {
 					SuspiciousStewIngredient.StewEffect.LIST_CODEC.parse(NbtOps.INSTANCE, nbtCompound.getList("effects", 10)).result().ifPresent((list1) -> {
@@ -37,11 +39,17 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 						});
 					});
 				}
-				PotionUtil.buildTooltip(list, lines, 1.0F);
+				
+				PotionUtil.buildTooltip(list, lines, 1.0F, getTickRate());
 			} else if (stack.isFood() && shouldShowTooltip(stack)) {
-				TooltipHelper.addFoodComponentEffectTooltip(stack, lines);
+				TooltipHelper.addFoodComponentEffectTooltip(stack, lines, getTickRate());
 			}
 		});
+	}
+	
+	private static float getTickRate() {
+		ClientWorld world = MinecraftClient.getInstance().world;
+		return world == null ? 20.0F : world.getTickManager().getTickRate();
 	}
 	
 	public static boolean shouldShowTooltip(ItemStack stack) {

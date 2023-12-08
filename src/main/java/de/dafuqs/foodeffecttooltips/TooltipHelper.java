@@ -15,15 +15,15 @@ import java.util.*;
 @Environment(EnvType.CLIENT)
 public class TooltipHelper {
 	
-	public static void addFoodComponentEffectTooltip(ItemStack stack, List<Text> tooltip) {
+	public static void addFoodComponentEffectTooltip(ItemStack stack, List<Text> tooltip, float tickRate) {
 		FoodComponent foodComponent = stack.getItem().getFoodComponent();
 		if (foodComponent != null) {
 			boolean isDrink = stack.getUseAction() == UseAction.DRINK;
-			buildFoodEffectTooltip(tooltip, foodComponent.getStatusEffects(), isDrink);
+			buildFoodEffectTooltip(tooltip, foodComponent.getStatusEffects(), tickRate, isDrink);
 		}
 	}
 	
-	public static void buildFoodEffectTooltip(List<Text> tooltip, List<Pair<StatusEffectInstance, Float>> effectsWithChance, boolean drink) {
+	public static void buildFoodEffectTooltip(List<Text> tooltip, List<Pair<StatusEffectInstance, Float>> effectsWithChance, float tickRate, boolean drink) {
 		if (effectsWithChance.isEmpty()) {
 			return;
 		}
@@ -49,7 +49,7 @@ public class TooltipHelper {
 				translatableText = Text.translatable("potion.withAmplifier", translatableText, Text.translatable("potion.potency." + statusEffectInstance.getAmplifier()));
 			}
 			if (statusEffectInstance.getDuration() > 20) {
-				translatableText = Text.translatable("potion.withDuration", translatableText, StringHelper.formatTicks(statusEffectInstance.getDuration()));
+				translatableText = Text.translatable("potion.withDuration", translatableText, StringHelper.formatTicks(statusEffectInstance.getDuration(), tickRate));
 			}
 			if (chance < 1.0F) {
 				translatableText = Text.translatable("foodeffecttooltips.food.withChance", translatableText, Math.round(chance * 100));
