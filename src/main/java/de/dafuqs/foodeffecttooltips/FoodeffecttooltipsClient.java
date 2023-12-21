@@ -16,8 +16,8 @@ import net.minecraft.item.SuspiciousStewItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.potion.PotionUtil;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +34,10 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		CONFIG = AutoConfig.getConfigHolder(FoodEffectsConfig.class).getConfig();
 		
 		ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-			if(stack.isOf(Items.SUSPICIOUS_STEW) && FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips && !context.isCreative()) {
+			if(stack.isOf(Items.SUSPICIOUS_STEW) && FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips) {
 				List<StatusEffectInstance> effects = getStewEffects(stack);
 				if(effects.size() > 0) {
-					PotionUtil.buildTooltip(effects, lines, 1.0F);
+					PotionUtil.buildTooltip(stack, lines, 1.0F);
 				}
 			} else if(stack.isFood() && shouldShowTooltip(stack)) {
 				TooltipHelper.addFoodComponentEffectTooltip(stack, lines);
@@ -51,7 +51,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		}
 		
 		Item item = stack.getItem();
-		Identifier identifier = Registries.ITEM.getId(item);
+		Identifier identifier = Registry.ITEM.getId(item);
 		
 		boolean isWhitelist = CONFIG.UseAsWhitelistInstead;
 		if(CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
