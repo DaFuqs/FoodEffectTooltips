@@ -1,4 +1,9 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
-  "foodeffecttooltips.food.whenEaten": "Wenn getrunken:"
+  "foodeffecttooltips.food.whenEaten": "Wenn gegessen:",
+
+  "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Zeige Effekte für Seltsame Suppen",
+  "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Benutze die Ausnahmelisten als Whitelist",
+  "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Ausgeschlossene Item IDs",
+  "text.autoconfig.FoodEffectTooltips.option.BlacklistedModsIDs": "Ausgeschlossene Mod IDs"
 }
