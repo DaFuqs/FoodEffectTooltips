@@ -21,6 +21,7 @@ public class FoodEffectsConfig implements ConfigData {
 			BlacklistedItemIdentifiers.add("no_mod:testitem");
 		}
 		if (BlacklistedModsIDs.isEmpty()) {
+			BlacklistedModsIDs.add("spectrum");
 			BlacklistedModsIDs.add("vinery");
 			BlacklistedModsIDs.add("farmersdelight");
 			BlacklistedModsIDs.add("createfood");
