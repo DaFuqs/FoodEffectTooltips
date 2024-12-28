@@ -1,6 +1,6 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
-  "foodeffecttooltips.food.whenEaten": "섭취시:",
+  "foodeffecttooltips.food.whenEaten": "섭취 시:",
 
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "수상한 스튜에 대한 효과 표시",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "대신 목록을 화이트리스트로 사용",
