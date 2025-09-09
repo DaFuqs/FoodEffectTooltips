@@ -2,7 +2,6 @@ package de.dafuqs.foodeffecttooltips;
 
 import com.google.common.collect.*;
 import com.mojang.datafixers.util.*;
-import net.fabricmc.api.*;
 import net.minecraft.*;
 import net.minecraft.core.*;
 import net.minecraft.network.chat.*;
@@ -15,7 +14,6 @@ import org.jetbrains.annotations.*;
 
 import java.util.*;
 
-@Environment(EnvType.CLIENT)
 public class TooltipHelper {
 	
 	public static void addFoodComponentEffectTooltip(@NotNull ItemStack stack, @NotNull Consumable consumableComponent, @NotNull List<Component> tooltip, float tickRate) {

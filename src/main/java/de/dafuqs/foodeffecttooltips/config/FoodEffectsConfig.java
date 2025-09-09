@@ -2,11 +2,9 @@ package de.dafuqs.foodeffecttooltips.config;
 
 import me.shedaniel.autoconfig.*;
 import me.shedaniel.autoconfig.annotation.*;
-import net.fabricmc.api.*;
 
 import java.util.*;
 
-@Environment(EnvType.CLIENT)
 @Config(name = "FoodEffectTooltips")
 public class FoodEffectsConfig implements ConfigData {
 	

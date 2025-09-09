@@ -1,0 +1,42 @@
+license = "lGPL3"
+issueTrackerURL = "https://github.com/DaFuqs/FoodEffectTooltips/issues"
+
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+modId = "foodeffecttooltips" #mandatory
+version = "${version}" #mandatory
+displayName = "Food Effect Tooltips" #mandatory
+displayURL = "github.com/DaFuqs/FoodEffectTooltips"
+
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile = "icon.png"
+
+# A text field displayed in the mod UI
+#credits="Dafuqs" #optional
+
+# A text field displayed in the mod UI
+authors = "Dafuqs" #optional
+
+# The description text for the mod (multi line!) (#mandatory)
+description = '''Adds tooltips to foods which grant status effects when eaten'''
+
+[[dependencies.foodeffecttooltips]] #optional
+modId = "neoforge" #mandatory
+type = "required" #mandatory
+versionRange = "${neoforge_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.foodeffecttooltips]]
+modId = "minecraft"
+type = "required"
+versionRange = "[${minecraft_version}]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.foodeffecttooltips]]
+modId = "cloth_config"
+type = "required"
+versionRange = "[${cloth_config_version},]"
+ordering = "NONE"
+side = "BOTH"
