@@ -7,5 +7,5 @@
   "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Чорний список ID предметів",
   "text.autoconfig.FoodEffectTooltips.option.BlacklistedModsIDs": "Чорний список ID модів",
   
-  "modmenu.descriptionTranslation.foodeffecttooltips": "Додає підказки до їжі, яка дає ефект піся поїдання"
+  "modmenu.descriptionTranslation.foodeffecttooltips": "Додає у підказки їжі ефекти, які вона дає після поїдання"
 }
