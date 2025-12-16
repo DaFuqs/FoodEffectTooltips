@@ -22,12 +22,16 @@ public class TooltipHelper {
 		if (consumableComponent.onConsumeEffects().isEmpty()) {
 			return;
 		}
-		boolean isDrink = stack.getUseAnimation() == ItemUseAnimation.DRINK;
-		buildFoodEffectTooltip(tooltip, consumableComponent.onConsumeEffects(), tickRate, isDrink);
+		
+		MutableComponent c = stack.getUseAnimation() == ItemUseAnimation.DRINK ? Component.translatable("potion.whenDrank") : Component.translatable("foodeffecttooltips.food.whenEaten");
+		addConsumeEffectsTooltip(consumableComponent.onConsumeEffects(), tooltip, tickRate, c);
 	}
 	
-	private static void buildFoodEffectTooltip(@NotNull List<Component> tooltip, List<ConsumeEffect> effects, float tickRate, boolean isDrink) {
-		
+	public static void addConsumeEffectsTooltip(@NotNull List<ConsumeEffect> consumeEffects, @NotNull List<Component> tooltip, float tickRate, MutableComponent component) {
+		buildFoodEffectTooltip(tooltip, consumeEffects, tickRate, component);
+	}
+	
+	private static void buildFoodEffectTooltip(@NotNull List<Component> tooltip, List<ConsumeEffect> effects, float tickRate, MutableComponent description) {
 		List<Pair<Holder<Attribute>, AttributeModifier>> modifiers = Lists.newArrayList();
 		
 		MutableComponent mutableText;
@@ -60,11 +64,7 @@ public class TooltipHelper {
 		
 		if (!modifiers.isEmpty()) {
 			tooltip.add(CommonComponents.EMPTY);
-			if (isDrink) {
-				tooltip.add(Component.translatable("potion.whenDrank").withStyle(ChatFormatting.DARK_PURPLE));
-			} else {
-				tooltip.add(Component.translatable("foodeffecttooltips.food.whenEaten").withStyle(ChatFormatting.DARK_PURPLE));
-			}
+			tooltip.add(description.withStyle(ChatFormatting.DARK_PURPLE));
 			
 			for (Pair<Holder<Attribute>, AttributeModifier> modifier : modifiers) {
 				AttributeModifier entityAttributeModifier = modifier.getSecond();

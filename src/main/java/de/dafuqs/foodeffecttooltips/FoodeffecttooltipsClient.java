@@ -7,11 +7,13 @@ import net.fabricmc.api.*;
 import net.fabricmc.fabric.api.client.item.v1.*;
 import net.minecraft.core.component.*;
 import net.minecraft.core.registries.*;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.*;
 import net.minecraft.world.item.component.*;
+import net.minecraft.world.item.consume_effects.*;
 import org.jetbrains.annotations.*;
 
 import java.util.*;
@@ -23,7 +25,6 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 	
 	@Override
 	public void onInitializeClient() {
-		
 		AutoConfig.register(FoodEffectsConfig.class, JanksonConfigSerializer::new);
 		CONFIG = AutoConfig.getConfigHolder(FoodEffectsConfig.class).getConfig();
 		
@@ -34,7 +35,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 			}
 			
 			if (FoodeffecttooltipsClient.CONFIG.ShowSuspiciousStewTooltips && !tooltipType.isCreative()) {
-				@Nullable SuspiciousStewEffects sus = stack.getOrDefault(DataComponents.SUSPICIOUS_STEW_EFFECTS, null);
+				@Nullable SuspiciousStewEffects sus = stack.get(DataComponents.SUSPICIOUS_STEW_EFFECTS);
 				if (sus != null && !sus.effects().isEmpty()) {
 					List<MobEffectInstance> list = new ArrayList<>();
 					for (SuspiciousStewEffects.Entry stewEffect : sus.effects()) {
@@ -42,6 +43,12 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 					}
 					PotionContents.addPotionTooltip(list, lines::add, 1.0F, context.tickRate());
 				}
+			}
+			
+			@Nullable DeathProtection deathProtection = stack.get(DataComponents.DEATH_PROTECTION);
+			if (deathProtection != null) {
+				List<ConsumeEffect> consumeEffects = deathProtection.deathEffects();
+				TooltipHelper.addConsumeEffectsTooltip(consumeEffects, lines, 1.0F, Component.translatable("foodeffecttooltips.food.whenTriggered"));
 			}
 		});
 	}
@@ -52,7 +59,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 		}
 		
 		Item item = stack.getItem();
-		ResourceLocation identifier = BuiltInRegistries.ITEM.getKey(item);
+		Identifier identifier = BuiltInRegistries.ITEM.getKey(item);
 		
 		boolean isWhitelist = CONFIG.UseAsWhitelistInstead;
 		if (CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
