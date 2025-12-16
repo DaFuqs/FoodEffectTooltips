@@ -1,6 +1,7 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
   "foodeffecttooltips.food.whenEaten": "When Eaten:",
+  "foodeffecttooltips.food.whenTriggered": "When triggered:",
 
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Show Effects for Suspicious Stew",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Use Lists as Whitelists instead",
