@@ -4,11 +4,13 @@ import net.minecraft.client.*;
 import net.minecraft.client.multiplayer.*;
 import net.minecraft.core.component.*;
 import net.minecraft.core.registries.*;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.*;
 import net.minecraft.world.item.component.*;
+import net.minecraft.world.item.consume_effects.*;
 import net.neoforged.bus.api.*;
 import net.neoforged.fml.common.*;
 import net.neoforged.neoforge.event.entity.player.*;
@@ -42,6 +44,12 @@ public class FoodEffectTooltipsEventHandler {
 				}
 				PotionContents.addPotionTooltip(list, event.getToolTip()::add, 1.0F, getTickRate());
 			}
+		}
+		
+		@Nullable DeathProtection deathProtection = stack.get(DataComponents.DEATH_PROTECTION);
+		if (deathProtection != null) {
+			List<ConsumeEffect> consumeEffects = deathProtection.deathEffects();
+			TooltipHelper.addConsumeEffectsTooltip(consumeEffects, lines, 1.0F, Component.translatable("foodeffecttooltips.food.whenTriggered"));
 		}
 	}
 	

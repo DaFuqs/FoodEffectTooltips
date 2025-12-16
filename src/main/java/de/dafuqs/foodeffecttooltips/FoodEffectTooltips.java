@@ -19,7 +19,7 @@ public class FoodEffectTooltips {
 		AutoConfig.register(FoodEffectsConfig.class, JanksonConfigSerializer::new);
 		CONFIG = AutoConfig.getConfigHolder(FoodEffectsConfig.class).getConfig();
 		
-		modContainer.registerExtensionPoint(IConfigScreenFactory.class, (modCont, parent) -> AutoConfig.getConfigScreen(FoodEffectsConfig.class, parent).get());
+		modContainer.registerExtensionPoint(IConfigScreenFactory.class, (modCont, parent) -> AutoConfigClient.getConfigScreen(FoodEffectsConfig.class, parent).get());
 	}
 	
 }
