@@ -37,6 +37,21 @@ public class TooltipHelper {
 		MutableComponent mutableText;
 		Holder<MobEffect> registryEntry;
 		for (ConsumeEffect entry : effects) {
+			if (entry instanceof ClearAllStatusEffectsConsumeEffect) {
+				tooltip.add(Component.translatable("foodeffecttooltips.food.clearsAllStatusEffects"));
+				continue;
+			}
+			if (entry instanceof TeleportRandomlyConsumeEffect teleportRandomlyConsumeEffect) {
+				tooltip.add(Component.translatable("foodeffecttooltips.food.teleportRandomly", teleportRandomlyConsumeEffect.diameter()));
+				continue;
+			}
+			if (entry instanceof RemoveStatusEffectsConsumeEffect removeStatusEffectsConsumeEffect) {
+				tooltip.add(Component.translatable("foodeffecttooltips.food.removesStatusEffects", removeStatusEffectsConsumeEffect.effects()));
+				for (var i : removeStatusEffectsConsumeEffect.effects()) {
+					tooltip.add(Component.literal("- ").append(i.value().getDisplayName()));
+				}
+				continue;
+			}
 			if (!(entry instanceof ApplyStatusEffectsConsumeEffect applyEffectsConsumeEffect)) {
 				continue;
 			}

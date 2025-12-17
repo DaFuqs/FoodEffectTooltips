@@ -3,6 +3,10 @@
   "foodeffecttooltips.food.whenEaten": "When Eaten:",
   "foodeffecttooltips.food.whenTriggered": "When triggered:",
 
+  "foodeffecttooltips.food.clearsAllStatusEffects": "Clears all Status Effects",
+  "foodeffecttooltips.food.teleportRandomly": "Teleports randomly up to %d blocks",
+  "foodeffecttooltips.food.removesStatusEffects": "Clears the following effects: %s",
+
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Show Effects for Suspicious Stew",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Use Lists as Whitelists instead",
   "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Blacklisted Item Identifiers",

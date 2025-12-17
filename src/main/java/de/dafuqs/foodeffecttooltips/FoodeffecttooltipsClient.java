@@ -48,7 +48,7 @@ public class FoodeffecttooltipsClient implements ClientModInitializer {
 			@Nullable DeathProtection deathProtection = stack.get(DataComponents.DEATH_PROTECTION);
 			if (deathProtection != null) {
 				List<ConsumeEffect> consumeEffects = deathProtection.deathEffects();
-				TooltipHelper.addConsumeEffectsTooltip(consumeEffects, lines, 1.0F, Component.translatable("foodeffecttooltips.food.whenTriggered"));
+				TooltipHelper.addConsumeEffectsTooltip(consumeEffects, lines, context.tickRate(), Component.translatable("foodeffecttooltips.food.whenTriggered"));
 			}
 		});
 	}
