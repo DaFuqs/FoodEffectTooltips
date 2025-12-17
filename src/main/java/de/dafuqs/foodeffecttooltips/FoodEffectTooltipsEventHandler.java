@@ -34,7 +34,7 @@ public class FoodEffectTooltipsEventHandler {
 		}
 		
 		if (FoodEffectTooltips.CONFIG.ShowSuspiciousStewTooltips && !event.getFlags().isCreative()) {
-			@Nullable SuspiciousStewEffects sus = stack.getOrDefault(DataComponents.SUSPICIOUS_STEW_EFFECTS, null);
+			@Nullable SuspiciousStewEffects sus = stack.get(DataComponents.SUSPICIOUS_STEW_EFFECTS);
 			if (sus != null && !sus.effects().isEmpty()) {
 				List<MobEffectInstance> list = new ArrayList<>();
 				for (SuspiciousStewEffects.Entry stewEffect : sus.effects()) {
@@ -51,7 +51,7 @@ public class FoodEffectTooltipsEventHandler {
 		}
 		
 		Item item = stack.getItem();
-		ResourceLocation identifier = BuiltInRegistries.ITEM.getKey(item);
+		Identifier identifier = BuiltInRegistries.ITEM.getKey(item);
 		
 		boolean isWhitelist = FoodEffectTooltips.CONFIG.UseAsWhitelistInstead;
 		if (FoodEffectTooltips.CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
