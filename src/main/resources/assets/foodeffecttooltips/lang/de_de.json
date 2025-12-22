@@ -2,8 +2,8 @@
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
   "foodeffecttooltips.food.whenEaten": "Wenn gegessen:",
 
-  "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Zeige Effekte für Seltsame Suppen",
-  "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Benutze die Ausnahmelisten als Whitelist",
-  "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Ausgeschlossene Item IDs",
-  "text.autoconfig.FoodEffectTooltips.option.BlacklistedModsIDs": "Ausgeschlossene Mod IDs"
+  "foodeffecttooltips.configuration.show_suspicious_stew_tooltips": "Zeige Effekte für Seltsame Suppen",
+  "foodeffecttooltips.configuration.use_as_whitelists_instead": "Benutze die Ausnahmelisten als Whitelist",
+  "foodeffecttooltips.configuration.blacklisted_item_identifiers": "Ausgeschlossene Item IDs",
+  "foodeffecttooltips.configuration.blacklisted_mod_ids": "Ausgeschlossene Mod IDs"
 }

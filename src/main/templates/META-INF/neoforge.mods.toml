@@ -12,9 +12,6 @@ displayURL = "github.com/DaFuqs/FoodEffectTooltips"
 logoFile = "icon.png"
 
 # A text field displayed in the mod UI
-#credits="Dafuqs" #optional
-
-# A text field displayed in the mod UI
 authors = "Dafuqs" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
@@ -31,12 +28,5 @@ side = "BOTH"
 modId = "minecraft"
 type = "required"
 versionRange = "[${minecraft_version}]"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.foodeffecttooltips]]
-modId = "cloth_config"
-type = "required"
-versionRange = "[${cloth_config_version},]"
 ordering = "NONE"
 side = "BOTH"

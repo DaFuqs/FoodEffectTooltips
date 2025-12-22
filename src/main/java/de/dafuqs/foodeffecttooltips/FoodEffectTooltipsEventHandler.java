@@ -35,7 +35,7 @@ public class FoodEffectTooltipsEventHandler {
 			TooltipHelper.addFoodComponentEffectTooltip(stack, consumable, event.getToolTip(), getTickRate());
 		}
 		
-		if (FoodEffectTooltips.CONFIG.ShowSuspiciousStewTooltips && !event.getFlags().isCreative()) {
+		if (FoodEffectTooltips.CONFIG.ShowSuspiciousStewTooltips.getAsBoolean() && !event.getFlags().isCreative()) {
 			@Nullable SuspiciousStewEffects sus = stack.get(DataComponents.SUSPICIOUS_STEW_EFFECTS);
 			if (sus != null && !sus.effects().isEmpty()) {
 				List<MobEffectInstance> list = new ArrayList<>();
@@ -47,7 +47,7 @@ public class FoodEffectTooltipsEventHandler {
 		}
 		
 		@Nullable DeathProtection deathProtection = stack.get(DataComponents.DEATH_PROTECTION);
-		if (deathProtection != null) {
+		if (deathProtection != null && shouldShowTooltip(stack)) {
 			List<ConsumeEffect> consumeEffects = deathProtection.deathEffects();
 			TooltipHelper.addConsumeEffectsTooltip(consumeEffects, event.getToolTip(), getTickRate(), Component.translatable("foodeffecttooltips.food.whenTriggered"));
 		}
@@ -61,11 +61,11 @@ public class FoodEffectTooltipsEventHandler {
 		Item item = stack.getItem();
 		Identifier identifier = BuiltInRegistries.ITEM.getKey(item);
 		
-		boolean isWhitelist = FoodEffectTooltips.CONFIG.UseAsWhitelistInstead;
-		if (FoodEffectTooltips.CONFIG.BlacklistedItemIdentifiers.contains(identifier.toString())) {
+		boolean isWhitelist = FoodEffectTooltips.CONFIG.UseAsWhitelistInstead.getAsBoolean();
+		if (FoodEffectTooltips.CONFIG.BlacklistedItemIdentifiers.get().contains(identifier.toString())) {
 			return isWhitelist;
 		}
-		if (FoodEffectTooltips.CONFIG.BlacklistedModsIDs.contains(identifier.getNamespace())) {
+		if (FoodEffectTooltips.CONFIG.BlacklistedModsIDs.get().contains(identifier.getNamespace())) {
 			return isWhitelist;
 		}
 		return !isWhitelist;

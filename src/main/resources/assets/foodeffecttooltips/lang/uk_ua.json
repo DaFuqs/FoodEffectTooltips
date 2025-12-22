@@ -2,10 +2,10 @@
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
   "foodeffecttooltips.food.whenEaten": "Коли з'їдено:",
 
-  "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Показати ефекти підозрілої юшки",
-  "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Натомість використовувати списки як білі",
-  "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Чорний список ID предметів",
-  "text.autoconfig.FoodEffectTooltips.option.BlacklistedModsIDs": "Чорний список ID модів",
+  "foodeffecttooltips.configuration.show_suspicious_stew_tooltips": "Показати ефекти підозрілої юшки",
+  "foodeffecttooltips.configuration.use_as_whitelists_instead": "Натомість використовувати списки як білі",
+  "foodeffecttooltips.configuration.blacklisted_item_identifiers": "Чорний список ID предметів",
+  "foodeffecttooltips.configuration.blacklisted_mod_ids": "Чорний список ID модів",
   
   "modmenu.descriptionTranslation.foodeffecttooltips": "Додає підказки до їжі, яка дає ефект піся поїдання"
 }

@@ -7,13 +7,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
 
-    maven { url "https://maven.shedaniel.me/" }
 }
 
 neoForge {
@@ -55,7 +49,7 @@ neoForge {
 }
 
 dependencies {
-    api("me.shedaniel.cloth:cloth-config-neoforge:${project.cloth_config_version}")
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -64,8 +58,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
     var replaceProperties = [
             version               : version,
             minecraft_version     : minecraft_version,
-            neoforge_version_range: neoforge_version_range,
-            cloth_config_version  : cloth_config_version,
+            neoforge_version_range: neoforge_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties
