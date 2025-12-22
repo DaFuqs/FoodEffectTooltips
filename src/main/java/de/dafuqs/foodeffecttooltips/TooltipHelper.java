@@ -46,7 +46,7 @@ public class TooltipHelper {
 				continue;
 			}
 			if (entry instanceof RemoveStatusEffectsConsumeEffect removeStatusEffectsConsumeEffect) {
-				tooltip.add(Component.translatable("foodeffecttooltips.food.removesStatusEffects", removeStatusEffectsConsumeEffect.effects()));
+				tooltip.add(Component.translatable("foodeffecttooltips.food.removesStatusEffects"));
 				for (var i : removeStatusEffectsConsumeEffect.effects()) {
 					tooltip.add(Component.literal("- ").append(i.value().getDisplayName()));
 				}

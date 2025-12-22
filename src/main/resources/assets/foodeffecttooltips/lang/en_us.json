@@ -5,7 +5,7 @@
 
   "foodeffecttooltips.food.clearsAllStatusEffects": "Clears all Status Effects",
   "foodeffecttooltips.food.teleportRandomly": "Teleports randomly up to %d blocks",
-  "foodeffecttooltips.food.removesStatusEffects": "Clears the following effects: %s",
+  "foodeffecttooltips.food.removesStatusEffects": "Clears the following effects:",
 
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Show Effects for Suspicious Stew",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Use Lists as Whitelists instead",
