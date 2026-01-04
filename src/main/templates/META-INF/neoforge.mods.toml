@@ -9,7 +9,7 @@ displayName = "Food Effect Tooltips" #mandatory
 displayURL = "github.com/DaFuqs/FoodEffectTooltips"
 
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile = "icon.png"
+logoFile = "assets/foodeffecttooltips/icon.png"
 
 # A text field displayed in the mod UI
 authors = "Dafuqs" #optional

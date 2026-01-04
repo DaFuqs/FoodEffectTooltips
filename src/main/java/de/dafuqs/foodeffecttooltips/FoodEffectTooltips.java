@@ -12,7 +12,6 @@ import net.neoforged.neoforge.client.gui.*;
 public class FoodEffectTooltips {
 	
 	public static final String MOD_ID = "foodeffecttooltips";
-	public static FoodEffectsConfig CONFIG;
 	
 	public FoodEffectTooltips(IEventBus modBus, ModContainer modContainer) {
 		modContainer.registerConfig(ModConfig.Type.COMMON, FoodEffectsConfig.CONFIG_SPEC);

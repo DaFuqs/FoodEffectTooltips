@@ -1,5 +1,6 @@
 package de.dafuqs.foodeffecttooltips;
 
+import de.dafuqs.foodeffecttooltips.config.*;
 import net.minecraft.client.*;
 import net.minecraft.client.multiplayer.*;
 import net.minecraft.core.component.*;
@@ -35,7 +36,7 @@ public class FoodEffectTooltipsEventHandler {
 			TooltipHelper.addFoodComponentEffectTooltip(stack, consumable, event.getToolTip(), getTickRate());
 		}
 		
-		if (FoodEffectTooltips.CONFIG.ShowSuspiciousStewTooltips.getAsBoolean() && !event.getFlags().isCreative()) {
+		if (FoodEffectsConfig.CONFIG.ShowSuspiciousStewTooltips.getAsBoolean() && !event.getFlags().isCreative()) {
 			@Nullable SuspiciousStewEffects sus = stack.get(DataComponents.SUSPICIOUS_STEW_EFFECTS);
 			if (sus != null && !sus.effects().isEmpty()) {
 				List<MobEffectInstance> list = new ArrayList<>();
@@ -54,18 +55,14 @@ public class FoodEffectTooltipsEventHandler {
 	}
 	
 	public static boolean shouldShowTooltip(ItemStack stack) {
-		if (FoodEffectTooltips.CONFIG == null) {
-			return false;
-		}
-		
 		Item item = stack.getItem();
 		Identifier identifier = BuiltInRegistries.ITEM.getKey(item);
 		
-		boolean isWhitelist = FoodEffectTooltips.CONFIG.UseAsWhitelistInstead.getAsBoolean();
-		if (FoodEffectTooltips.CONFIG.BlacklistedItemIdentifiers.get().contains(identifier.toString())) {
+		boolean isWhitelist = FoodEffectsConfig.CONFIG.UseAsWhitelistInstead.getAsBoolean();
+		if (FoodEffectsConfig.CONFIG.BlacklistedItemIdentifiers.get().contains(identifier.toString())) {
 			return isWhitelist;
 		}
-		if (FoodEffectTooltips.CONFIG.BlacklistedModsIDs.get().contains(identifier.getNamespace())) {
+		if (FoodEffectsConfig.CONFIG.BlacklistedModsIDs.get().contains(identifier.getNamespace())) {
 			return isWhitelist;
 		}
 		return !isWhitelist;
