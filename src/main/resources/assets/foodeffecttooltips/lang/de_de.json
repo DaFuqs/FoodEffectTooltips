@@ -1,6 +1,11 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
   "foodeffecttooltips.food.whenEaten": "Wenn gegessen:",
+  "foodeffecttooltips.food.whenTriggered": "Wenn ausgelöst:",
+
+  "foodeffecttooltips.food.clearsAllStatusEffects": "Entferne alle Statuseffekte",
+  "foodeffecttooltips.food.teleportRandomly": "Teleportiert zufällig bis zu %d Blöcke weit",
+  "foodeffecttooltips.food.removesStatusEffects": "Entfernt die folgenden Statuseffekte:",
 
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Zeige Effekte für Seltsame Suppen",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Benutze die Ausnahmelisten als Whitelist",
