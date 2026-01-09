@@ -1,0 +1,14 @@
+{
+  "foodeffecttooltips.food.withChance": "%s [%d%%]",
+  "foodeffecttooltips.food.whenEaten": "Когда съедается:",
+  "foodeffecttooltips.food.whenTriggered": "При срабатывании:",
+
+  "foodeffecttooltips.food.clearsAllStatusEffects": "Снимает все эффекты статуса",
+  "foodeffecttooltips.food.teleportRandomly": "Телепортирует случайным образом на расстояние до %d блоков",
+  "foodeffecttooltips.food.removesStatusEffects": "Устраняет следующие эффекты:",
+
+  "foodeffecttooltips.configuration.show_suspicious_stew_tooltips": "Показать эффекты для подозрительного рагу",
+  "foodeffecttooltips.configuration.use_as_whitelists_instead": "Используйте списки в качестве белых списков",
+  "foodeffecttooltips.configuration.blacklisted_item_identifiers": "ID предметов, занесенных в черный список",
+  "foodeffecttooltips.configuration.blacklisted_mod_ids": "ID модов, занесенные в черный список"
+}
