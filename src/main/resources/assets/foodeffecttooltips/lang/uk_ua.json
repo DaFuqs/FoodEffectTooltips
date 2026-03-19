@@ -1,11 +1,16 @@
 {
   "foodeffecttooltips.food.withChance": "%s [%d%%]",
   "foodeffecttooltips.food.whenEaten": "Коли з'їдено:",
+  "foodeffecttooltips.food.whenTriggered": "Коли задіяно:",
+
+  "foodeffecttooltips.food.clearsAllStatusEffects": "ОЧищує всі ефекти",
+  "foodeffecttooltips.food.teleportRandomly": "Випадково телепортує в радіусі %d блоків",
+  "foodeffecttooltips.food.removesStatusEffects": "Очищує такі ефекти:",
 
   "text.autoconfig.FoodEffectTooltips.option.ShowSuspiciousStewTooltips": "Показати ефекти підозрілої юшки",
   "text.autoconfig.FoodEffectTooltips.option.UseAsWhitelistInstead": "Натомість використовувати списки як білі",
   "text.autoconfig.FoodEffectTooltips.option.BlacklistedItemIdentifiers": "Чорний список ID предметів",
   "text.autoconfig.FoodEffectTooltips.option.BlacklistedModsIDs": "Чорний список ID модів",
   
-  "modmenu.descriptionTranslation.foodeffecttooltips": "Додає у підказки їжі ефекти, які вона дає після поїдання"
+  "modmenu.descriptionTranslation.foodeffecttooltips": "Додає у підказки їжі ефекти, які вона дає після поїдання."
 }
