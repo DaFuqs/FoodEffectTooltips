@@ -1,5 +1,5 @@
 plugins {
-    id 'net.neoforged.moddev' version '2.0.126'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'maven-publish'
 }
 
@@ -56,9 +56,10 @@ dependencies {
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
-            version               : version,
-            minecraft_version     : minecraft_version,
-            neoforge_version_range: neoforge_version_range
+            version                : version,
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neoforge_version_range : neoforge_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties
@@ -72,17 +73,10 @@ sourceSets.main.resources.srcDir generateModMetadata
 // To avoid having to run "generateModMetadata" manually, make it run on every project reload
 neoForge.ideSyncTask generateModMetadata
 
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 21
-}
-
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task if it is present.
-    // If you remove this line, sources will not be generated.
-    withSourcesJar()
-
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
 }
 
 jar {
