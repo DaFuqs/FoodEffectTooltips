@@ -14,7 +14,7 @@ public class FoodEffectTooltips {
 	public static final String MOD_ID = "foodeffecttooltips";
 	
 	public FoodEffectTooltips(IEventBus modBus, ModContainer modContainer) {
-		modContainer.registerConfig(ModConfig.Type.COMMON, FoodEffectsConfig.CONFIG_SPEC);
+		modContainer.registerConfig(ModConfig.Type.LOCAL, FoodEffectsConfig.CONFIG_SPEC);
 		modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 	}
 	
